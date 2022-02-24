@@ -1,29 +1,39 @@
 import random
+import string 
 
-def create_new_child(parent1, parent2):
-    dna1 = parent1[0]
-    dna2 = parent2[0]
-    dna3 = ""
 
-    counter = 2
-    for i in range(len(dna1)):
 
-        variation = random.randrange(1,50)
-        if variation == 2:
-            letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890"
-            lenofletters = len(letters)
-            number =  random.randrange(1,lenofletters)
-            random_letter = letters[number]
-            dna3 += random_letter
-        
-        else:
-            if counter % 2 == 0:
-                dna3 += dna1[i]
-                counter += 1
 
-            
-            else:
-                dna3 += dna2[i]
-                counter += 1
 
-    return dna3
+def create_random_word():
+    ##change this number to expand the length of possible words
+    number = random.randrange(1, 45)
+    ##<checkstep>print(number)
+    
+    ## number will be the length of the word produced
+    selection = ""
+    selection += string.ascii_letters
+    selection += " "
+    selection += string.digits
+    selection += string.punctuation
+    word_produced = ""
+
+    len_of_selection = len(selection)
+
+    for i in range(number):
+        rand_number = random.randrange(0,len(selection))
+        letter = selection[rand_number]
+        word_produced += letter
+    
+
+    return(word_produced)
+
+    
+
+def create_random_letter():
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    rand_number = random.randrange(1,26)
+
+    random_letter = alphabet[rand_number]
+
+    return random_letter
